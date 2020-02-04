@@ -22,4 +22,5 @@ jobs:
     - name: Upload JAR
       uses: actions/upload-artifact@v1
       with:
+        name: HelloWorld
         path: build/jar
