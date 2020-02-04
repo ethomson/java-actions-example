@@ -1,12 +1,16 @@
 name: Java CI with Ant
 
-on: [push]
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 1.8
@@ -14,4 +18,8 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Ant
-      run: ant -noinput -buildfile build.xml test
+      run: ant -noinput -buildfile build.xml test jar
+    - name: Upload JAR
+      uses: actions/upload-artifact
+      with:
+        path: build/jar
