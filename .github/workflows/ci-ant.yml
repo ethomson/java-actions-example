@@ -20,6 +20,6 @@ jobs:
     - name: Build with Ant
       run: ant -noinput -buildfile build.xml test jar
     - name: Upload JAR
-      uses: actions/upload-artifact
+      uses: actions/upload-artifact@v1
       with:
         path: build/jar
